@@ -1,7 +1,8 @@
 // inporto bootstrap
 @import '~bootstrap/scss/bootstrap.scss';
 
-//inporto  Font source
+//inporto  Font awesome (NON FUNZIONA)
+// @import '../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
 
 
 .wrapper{
@@ -12,4 +13,5 @@
 .gb-container{
   width: 80%;
   margin: 0 auto;
+  max-width: 1800px;
 }

@@ -1,102 +1,23 @@
 <template>
   
-  <div class="container-fluid">
-
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 d-flex">
-
-      <div class="col mb-4">
-        <div class="gb-card text-center  p-2">
-          <img src="" alt="mia immagine">
-          <div class="title-song">new jersey</div>
-          <div class="author-song">bon jovi</div>
-          <div class="date-song">1988</div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div class="gb-card text-center  p-2">
-          <img src="" alt="mia immagine">
-          <div class="title-song">new jersey</div>
-          <div class="author-song">bon jovi</div>
-          <div class="date-song">1988</div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div class="gb-card text-center  p-2">
-          <img src="" alt="mia immagine">
-          <div class="title-song">new jersey</div>
-          <div class="author-song">bon jovi</div>
-          <div class="date-song">1988</div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div class="gb-card text-center  p-2">
-          <img src="" alt="mia immagine">
-          <div class="title-song">new jersey</div>
-          <div class="author-song">bon jovi</div>
-          <div class="date-song">1988</div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div class="gb-card text-center  p-2">
-          <img src="" alt="mia immagine">
-          <div class="title-song">new jersey</div>
-          <div class="author-song">bon jovi</div>
-          <div class="date-song">1988</div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div class="gb-card text-center  p-2">
-          <img src="" alt="mia immagine">
-          <div class="title-song">new jersey</div>
-          <div class="author-song">bon jovi</div>
-          <div class="date-song">1988</div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div class="gb-card text-center  p-2">
-          <img src="" alt="mia immagine">
-          <div class="title-song">new jersey</div>
-          <div class="author-song">bon jovi</div>
-          <div class="date-song">1988</div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div class="gb-card text-center  p-2">
-          <img src="" alt="mia immagine">
-          <div class="title-song">new jersey</div>
-          <div class="author-song">bon jovi</div>
-          <div class="date-song">1988</div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div class="gb-card text-center  p-2">
-          <img src="" alt="mia immagine">
-          <div class="title-song">new jersey</div>
-          <div class="author-song">bon jovi</div>
-          <div class="date-song">1988</div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div class="gb-card text-center  p-2">
-          <img src="" alt="mia immagine">
-          <div class="title-song">new jersey</div>
-          <div class="author-song">bon jovi</div>
-          <div class="date-song">1988</div>
-        </div>
-      </div>
-      
-      
-
-
+  <div class="col mb-4">
+    <div class="gb-card text-center p-2">
+      <img class="w-100 mb-3" :src="cover.poster" :alt="cover.title">
+      <div class="title-song">{{cover.title}}</div>
+      <div class="author-song">{{cover.author}}</div>
+      <div class="date-song">{{cover.year}}</div>
     </div>
-
   </div>
 
 </template>
 
 <script>
 export default {
-  name: 'CardComp'
+  name: 'CardComp',
+
+  props:{
+    cover: Object
+  }
 }
 </script>
 
@@ -106,5 +27,17 @@ export default {
 .gb-card{
   background-color: $primary-color;
   min-height: 300px;
+  font-size: .8rem;
+  
+  .title-song{
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .author-song,
+  .date-song{
+    color: lighten($primary-color, 20%);
+  }
+  
 }
 </style>

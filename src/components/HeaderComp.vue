@@ -6,7 +6,7 @@
     </div>
 
     <div class="input-group w-auto">
-      <select class="custom-select p-1" id="inputGroupSelect02">
+      <select class="custom-select p-2" id="inputGroupSelect02">
         <option selected>Seleziona un genere</option>
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -27,12 +27,17 @@ export default {
 @import '../assets/style/vars';
 
 header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   min-height: 60px;
   background-color: $primary-color;
+  font-size: .9rem;
 
   .logo{
-    width: 50px;
-    height: 50px;
+    font-size: 35px;
+    color: #35BD59;
   }
 }
 </style>

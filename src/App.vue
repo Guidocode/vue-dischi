@@ -9,7 +9,6 @@
 </template>
 
 <script>
-// import axios from 'axios';
 import HeaderComp from './components/HeaderComp.vue';
 import MainComp from './components/MainComp.vue';
 
