@@ -1,22 +1,18 @@
 <template>
   <div class="wrapper d-flex flex-column">
-    
-    <HeaderComp />
 
-    <MainComp />
+    <GlobalContentComp />
 
   </div>
 </template>
 
 <script>
-import HeaderComp from './components/HeaderComp.vue';
-import MainComp from './components/MainComp.vue';
+import GlobalContentComp from './components/GlobalContentComp.vue';
 
 export default {
   name: 'App',
   components: {
-    HeaderComp,
-    MainComp
+    GlobalContentComp
   }
 }
 </script>

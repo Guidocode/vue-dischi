@@ -1,6 +1,22 @@
 <template>
-  <main>
+  <div class="global-content">
+    
+    <!-- CONTENT TOP -->
+    <div class="content-top d-flex justify-content-between align-items-center px-3">
 
+      <div class="logo">
+        <i class="fa-brands fa-spotify"></i>
+      </div>
+
+      <SelectComp />
+    
+    </div>
+    
+    <!-- /CONTENT TOP -->
+
+
+
+    <!-- CONTENT BOTTOM -->
     <!-- Logica errore -->
     <div v-if="!isError" class="h-100">
       <div v-if="!isLoading"
@@ -26,18 +42,21 @@
     
     <div v-else class="text-center my-5">{{errorMessage}}</div>
     <!-- /Logica errore -->
+    <!-- CONTENT BOTTOM -->
     
-  </main>
+  </div>
 </template>
 
 <script>
 import axios from 'axios';
+import SelectComp from './SelectComp.vue';
 import CardComp from './CardComp.vue';
 import LoadingComp from './LoadingComp.vue';
 export default {
-  name: "MainComp",
+  name: "GlobalContentComp",
 
   components: {
+    SelectComp,
     CardComp,
     LoadingComp
 },
@@ -45,7 +64,6 @@ export default {
   data(){
     return{
       baseUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
-
       arrayCovers: [],
       isLoading: true,
       errorMessage: '',
@@ -78,7 +96,22 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/style/vars';
 
-main{
+.global-content{
+  .content-top{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 60px;
+    background-color: $primary-color;
+    font-size: .9rem;
+
+    .logo{
+      font-size: 35px;
+      color: #35BD59;
+    }
+  }
+
   background-color: #1E2D3B;
   flex-grow: 1;
   margin-top: 60px;
