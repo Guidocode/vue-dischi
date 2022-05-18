@@ -44,7 +44,7 @@ export default {
 
   data(){
     return{
-      baseUrl: 'https://flynn.boolean.careers/exercises/api/array/musicx',
+      baseUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
 
       arrayCovers: [],
       isLoading: true,
