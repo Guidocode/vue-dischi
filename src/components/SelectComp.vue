@@ -1,12 +1,12 @@
 <template>
 
   <div class="input-group w-auto">
-    <select @change="$emit('changeOption', optionSelected)" class="custom-select p-2" id="inputGroupSelect02">
-      <option value="0" selected>Seleziona un genere</option>
-      <option value="1">Rock</option>
-      <option value="2">Pop</option>
-      <option value="3">Jazz</option>
-      <option value="4">Metal</option>
+    <select v-model="selected" @change="changeValue" class="custom-select p-2" id="inputGroupSelect02">
+      <option value="All" selected>Seleziona un genere</option>
+      <option value="Rock">Rock</option>
+      <option value="Pop">Pop</option>
+      <option value="Jazz">Jazz</option>
+      <option value="Metal">Metal</option>
     </select>
   </div>
 
@@ -18,12 +18,15 @@ export default {
 
   data(){
     return{
-      
+      selected: 'All'
     }
   },
 
   methods:{
-    
+    changeValue(){
+      this.$emit('cambioValore', this.selected)
+      // console.log(this.selected);
+    }
   }
 }
 </script>

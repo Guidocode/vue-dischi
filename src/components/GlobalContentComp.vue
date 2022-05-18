@@ -8,7 +8,7 @@
         <i class="fa-brands fa-spotify"></i>
       </div>
 
-      <SelectComp />
+      <SelectComp @cambioValore="selectedGenre" />
     
     </div>
     
@@ -26,7 +26,7 @@
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex">
 
             <CardComp 
-            v-for="(coverItem, index) in arrayCovers" :key="`coverItem-${index}`"
+            v-for="(coverItem, index) in getArrayCoversFiltered" :key="`coverItem-${index}`"
             :cover="coverItem"
             />
 
@@ -67,7 +67,9 @@ export default {
       arrayCovers: [],
       isLoading: true,
       errorMessage: '',
-      isError: false
+      isError: false,
+
+      chosenGenre: ''
     }
   },
 
@@ -84,11 +86,32 @@ export default {
         this.isError = true;
         console.log('ERRORE', this.errorMessage);
       })
+    },
+
+    selectedGenre(genereSelezionato){
+      this.chosenGenre = genereSelezionato;
+      console.log(genereSelezionato);
     }
   },
 
   mounted(){
     this.getApi();
+  },
+
+  computed:{
+    getArrayCoversFiltered(){
+      let arrayCoversFiltered = [];
+
+      if(this.chosenGenre === 'All'){
+        arrayCoversFiltered = this.arrayCovers;
+      }else{
+        arrayCoversFiltered = this.arrayCovers.filter(coverItem => {
+          return coverItem.genre.toLowerCase().includes(this.chosenGenre.toLowerCase());
+          
+        })
+      }
+      return arrayCoversFiltered;
+    }
   }
 }
 </script>
