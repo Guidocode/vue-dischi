@@ -67,6 +67,6 @@ main{
   background-color: #1E2D3B;
   flex-grow: 1;
   margin-top: 60px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 </style>

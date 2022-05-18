@@ -3,7 +3,7 @@
   <div class="col mb-4">
     <div class="gb-card text-center p-2">
       <div class="cover-image">
-        <img class="w-100 mb-3" :src="cover.poster" :alt="cover.title">
+        <img class="w-100" :src="cover.poster" :alt="cover.title">
         <!-- Layover e animazione -->
         <div class="layover">
           <div class="play-hover d-flex justify-content-center align-items-center h-100">
@@ -12,7 +12,7 @@
         </div>
         <!-- /Layover e animazione -->
       </div>
-      <div class="title-song">{{cover.title}}</div>
+      <div class="title-song mt-3">{{cover.title}}</div>
       <div class="author-song">{{cover.author}}</div>
       <div class="date-song">{{cover.year}}</div>
     </div>
@@ -39,22 +39,27 @@ export default {
   font-size: .8rem;
   transition: all .2s;
   border-radius: 5px;
+  cursor: pointer;
   &:hover{
     transform: scale(1.05);
     background-color: lighten($primary-color, 70%);
-    color: #1E2D3B;  // da cambiare
+  }
+  &:hover .title-song{
+    color: #1E2D3B; 
+  }
+  &:hover .cover-image .layover{
+    display: block;
   }
 
   .cover-image{
     position: relative;
 
-    // da modificare con hover giusto
     .layover{
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%; // da sistemare
+      height: 100%;
       background-color: rgba(0, 0, 0, .5);
       color: white;
       display: none;
