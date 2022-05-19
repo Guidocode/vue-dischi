@@ -35,7 +35,7 @@ export default {
 
 .gb-card{
   background-color: $primary-color;
-  min-height: 300px;
+  height: 100%;
   font-size: .8rem;
   transition: all .2s;
   border-radius: 5px;
@@ -79,8 +79,6 @@ export default {
     }
   }
 
-
-  
   .title-song{
     text-transform: uppercase;
     margin-bottom: 20px;

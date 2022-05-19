@@ -8,7 +8,21 @@
         <i class="fa-brands fa-spotify"></i>
       </div>
 
-      <SelectComp @cambioValore="selectedGenre" />
+      <SelectComp @cambioValore="selectedGenre" 
+      :genres="arrayGenre"
+      />
+
+      <!-- <div class="input-group w-auto">
+        <select v-model="selected" @change="changeValue" class="custom-select p-2" id="inputGroupSelect02">
+          <option value="All" selected>Seleziona un genere</option>
+
+          <SelectComp @cambioValore="selectedGenre" />
+
+          v-for="(optionItem, index) in options" :key="`optionItem-${index}`"
+          :option="optionItem"
+
+        </select>
+      </div> -->
     
     </div>
     
@@ -52,6 +66,7 @@ import axios from 'axios';
 import SelectComp from './SelectComp.vue';
 import CardComp from './CardComp.vue';
 import LoadingComp from './LoadingComp.vue';
+// import arrayOptionsSelect from '../assets/data/arrayOptionsSelect'
 export default {
   name: "GlobalContentComp",
 
@@ -69,7 +84,10 @@ export default {
       errorMessage: '',
       isError: false,
 
-      chosenGenre: ''
+      chosenGenre: '',
+
+      arrayGenre: []
+
     }
   },
 
@@ -80,6 +98,9 @@ export default {
         console.log('res', resp.data.response);
         this.arrayCovers = resp.data.response;
         this.isLoading = false;
+        
+        this.getGenres();
+        console.log(this.arrayGenre);
       })
       .catch(error => {
         this.errorMessage = error;
@@ -91,11 +112,20 @@ export default {
     selectedGenre(genereSelezionato){
       this.chosenGenre = genereSelezionato;
       console.log(genereSelezionato);
+    },
+
+    getGenres(){
+      this.arrayCovers.forEach(coverItem =>{
+        if(!this.arrayGenre.includes(coverItem.genre)) this.arrayGenre.push(coverItem.genre)
+      })
     }
+
   },
 
   mounted(){
     this.getApi();
+
+    console.log(this.genres);
   },
 
   computed:{
