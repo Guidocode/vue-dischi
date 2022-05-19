@@ -1,20 +1,14 @@
 <template>
 
   <div class="input-group w-auto">
-    <select v-model="selected" @change="changeValue" class="custom-select p-2" id="inputGroupSelect02">
+    <select v-model="selected" @change="changeGenre" class="custom-select p-2" id="inputGroupSelect02">
       <option value="All" selected>Seleziona un genere</option>
       
       <option
       v-for="(genre, index) in genres" :key="`genre-${index}`"
-       :value="genre">{{genre}}</option>
+      :value="genre">{{genre}}</option>
       
     </select>
-
-    <!-- 
-      <option 
-      v-for="(genre, index) in genres" :key="`genre-${index}`"
-      :value="genre">{{genre}}</option> 
-    -->
   </div>
 
 </template>
@@ -34,8 +28,8 @@ export default {
   },
 
   methods:{
-    changeValue(){
-      this.$emit('cambioValore', this.selected)
+    changeGenre(){
+      this.$emit('cambioGenere', this.selected)
       // console.log(this.selected);
     }
   }

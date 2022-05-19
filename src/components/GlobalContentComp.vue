@@ -8,21 +8,18 @@
         <i class="fa-brands fa-spotify"></i>
       </div>
 
-      <SelectComp @cambioValore="selectedGenre" 
-      :genres="arrayGenre"
-      />
 
-      <!-- <div class="input-group w-auto">
-        <select v-model="selected" @change="changeValue" class="custom-select p-2" id="inputGroupSelect02">
-          <option value="All" selected>Seleziona un genere</option>
+      <div class="select d-flex">
 
-          <SelectComp @cambioValore="selectedGenre" />
+        <SelectComp @cambioGenere="selectedGenre" 
+        :genres="arrayGenre"
+        />
 
-          v-for="(optionItem, index) in options" :key="`optionItem-${index}`"
-          :option="optionItem"
+        <SelectAuthorsComp @cambioAutore="selectedAuthor" 
+        :authors="arrayAuthors"
+        />
 
-        </select>
-      </div> -->
+      </div>
     
     </div>
     
@@ -66,14 +63,15 @@ import axios from 'axios';
 import SelectComp from './SelectComp.vue';
 import CardComp from './CardComp.vue';
 import LoadingComp from './LoadingComp.vue';
-// import arrayOptionsSelect from '../assets/data/arrayOptionsSelect'
+import SelectAuthorsComp from './SelectAuthorsComp.vue';
 export default {
   name: "GlobalContentComp",
 
   components: {
     SelectComp,
     CardComp,
-    LoadingComp
+    LoadingComp,
+    SelectAuthorsComp
 },
 
   data(){
@@ -85,8 +83,10 @@ export default {
       isError: false,
 
       chosenGenre: '',
+      chosenAuthor: '',
 
-      arrayGenre: []
+      arrayGenre: [],
+      arrayAuthors: []
 
     }
   },
@@ -99,8 +99,13 @@ export default {
         this.arrayCovers = resp.data.response;
         this.isLoading = false;
         
+        // Funzione array di generi
         this.getGenres();
         console.log(this.arrayGenre);
+
+        // Funzione array di autori
+        this.getAuthors();
+        console.log(this.arrayAuthors);
       })
       .catch(error => {
         this.errorMessage = error;
@@ -113,10 +118,19 @@ export default {
       this.chosenGenre = genereSelezionato;
       console.log(genereSelezionato);
     },
+    selectedAuthor(autoreSelezionato){
+      this.chosenAuthor = autoreSelezionato;
+      console.log(autoreSelezionato);
+    },
 
     getGenres(){
       this.arrayCovers.forEach(coverItem =>{
         if(!this.arrayGenre.includes(coverItem.genre)) this.arrayGenre.push(coverItem.genre)
+      })
+    },
+    getAuthors(){
+      this.arrayCovers.forEach(coverItem =>{
+        if(!this.arrayAuthors.includes(coverItem.author)) this.arrayAuthors.push(coverItem.author)
       })
     }
 
@@ -140,6 +154,16 @@ export default {
           
         })
       }
+
+      if(this.chosenAuthor === 'All'){
+        arrayCoversFiltered;
+      }else{
+        arrayCoversFiltered = arrayCoversFiltered.filter(coverItem => {
+          return coverItem.author.toLowerCase().includes(this.chosenAuthor.toLowerCase());
+          
+        })
+      }
+
       return arrayCoversFiltered;
     }
   }
